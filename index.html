@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div v-for="(item, index) in arr" :key="index">{{item.name}}</div>
+    <button @click="show=true">显示</button>
+    <div v-if="show">aaaa</div>
+  </div>
+  <script>
+  
+    let vm = new Vue({
+      el:"#app",
+      data: {
+        name:'testVue',
+        arr:[
+          {id:1,name:'2'},
+          {id:2,name:'4'},
+          {id:3,name:'6'},
+        ],
+        show:false,
+        myObj: {
+          name: 'Maisie',
+          age: 27
+        }
+      },
+      created() {
+        this.myInit()
+      },
+      mounted() {
+        console.log('mounted')
+      },
+      computed: {
+        calc() {
+          return this.name + 'computed'
+        }
+      },
+      watch: {
+        name(n,o) {
+          console.log(n,o)
+        }
+      },
+      methods: {
+        myInit() {
+          console.log('myInit')
+          
+        }
+      },
+    })
+  
+  </script>
+</body>
+</html>
